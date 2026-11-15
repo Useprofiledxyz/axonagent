@@ -48,3 +48,33 @@
   let started = false;
   new IntersectionObserver((es) => { if (es[0].isIntersecting && !started) { started = true; play(); } }, { threshold: 0.3 }).observe(demo);
 })();
+
+// Menu links scroll to their section without adding "#section" to the address bar.
+(() => {
+  const go = (id, smooth = true) => {
+    const el = id ? document.getElementById(id) : null;
+    if (el) el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+    else window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+  };
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const id = a.getAttribute("href").slice(1);
+    if (a.getAttribute("href") === "#" && a.target === "_blank") return; // external links not set yet
+    e.preventDefault();
+    go(id);
+  });
+  // Arriving with a hash (old links, or "Back to sign in" from the studio): scroll there, then clean the address.
+  const q = new URLSearchParams(location.search).get("go");
+  if (location.hash || q) {
+    const id = q || decodeURIComponent(location.hash.slice(1));
+    history.replaceState(null, "", location.pathname);
+    addEventListener("load", () => setTimeout(() => go(id, false), 50));
+  }
+  // A hash typed or linked while already on the page.
+  addEventListener("hashchange", () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    history.replaceState(null, "", location.pathname + location.search);
+    go(id);
+  });
+})();
