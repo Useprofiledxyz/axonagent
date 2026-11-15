@@ -4,6 +4,5 @@
 // ============================================================
 window.AXON_CONFIG = {
   xUrl: "https://x.com/Useaxonxyz",
-  communityUrl: "https://t.me/",
   docsUrl: "#faq",
 };

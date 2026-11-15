@@ -5,7 +5,6 @@
   const $ = (id) => document.getElementById(id);
 
   for (const id of ["xLink", "xLink2"]) $(id).href = C.xUrl || "#";
-  $("tgLink").href = C.communityUrl || "#";
 
 
   const msg = (t, kind = "") => { $("gMsg").textContent = t; $("gMsg").className = `msg ${kind}`; };
