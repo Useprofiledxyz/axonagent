@@ -1,8 +1,9 @@
-import { isAddress, json, newNonce, normalize, settings, sign } from "../_lib.js";
+import { hasSecret, isAddress, json, newNonce, normalize, settings, sign } from "../_lib.js";
 
 // GET /api/auth/nonce?address=<wallet>: a sign-in message for this wallet, valid 5 minutes.
 export default function handler(req, res) {
   const address = new URL(req.url, "http://x").searchParams.get("address") || "";
+  if (!hasSecret()) return json(res, 503, { error: "Sign-in isn't set up yet: add SESSION_SECRET in the hosting settings." });
   if (!isAddress(address)) return json(res, 400, { error: "That isn't a wallet address" });
   const wallet = normalize(address);
   const issuedAt = new Date().toISOString();

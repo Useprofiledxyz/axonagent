@@ -4,11 +4,25 @@
   "outputDirectory": ".",
   "cleanUrls": true,
   "redirects": [
-    { "source": "/axon", "destination": "/", "permanent": false },
-    { "source": "/axon/studio", "destination": "/studio", "permanent": false },
-    { "source": "/mirai", "destination": "/", "permanent": false }
+    {
+      "source": "/axon",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/axon/studio",
+      "destination": "/studio",
+      "permanent": false
+    },
+    {
+      "source": "/mirai",
+      "destination": "/",
+      "permanent": false
+    }
   ],
   "functions": {
-    "api/agent.js": { "maxDuration": 300 }
+    "api/agent.js": {
+      "maxDuration": 300
+    }
   }
 }

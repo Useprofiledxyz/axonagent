@@ -2,36 +2,47 @@
 import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { createPublicClient, formatUnits, getAddress, http, isAddress as viemIsAddress, parseAbi, verifyMessage } from "viem";
 
-// ---------- settings (Vercel env vars, or .env when running locally) ----------
-// Robinhood Chain (EVM). Defaults are Robinhood Chain mainnet; every value can be overridden.
+// ---------- settings ----------
+// Edit axon.config.json in the repo (token, tiers, chain). An env var with the same meaning
+// overrides it (TOKEN_ADDRESS, REQUIRED_AMOUNT, DAILY_LIMIT, RPC_URL, ...). Secrets never go in the file.
+import FILE from "../axon.config.json" with { type: "json" };
+
 export function settings() {
-  const env = process.env;
-  const chainId = Number(env.CHAIN_ID || 4663);
+  const env = process.env, f = FILE || {};
+  const token = f.token || {}, builds = f.builds || {}, chain = f.chain || {};
+  const tokenAddress = String(env.TOKEN_ADDRESS || token.address || "").trim();
+  const tiers = (builds.tiers && builds.tiers.length ? builds.tiers : [{ name: "Signal", holdMultiplier: 1, buildsMultiplier: 1 }])
+    .map((t, i) => ({
+      name: t.name,
+      hold: Number((i === 1 && env.TIER2_HOLD) || (i === 2 && env.TIER3_HOLD) || t.holdMultiplier || 1),
+      builds: Number((i === 1 && env.TIER2_BUILDS) || (i === 2 && env.TIER3_BUILDS) || t.buildsMultiplier || 1),
+    }));
   return {
-    tokenAddress: (env.TOKEN_ADDRESS || "").trim(),
-    tokenSymbol: (env.TOKEN_SYMBOL || "AXON").trim(),
-    requiredAmount: Number(env.REQUIRED_AMOUNT || 1_000_000),
-    chainId,
-    chainName: env.CHAIN_NAME || "Robinhood Chain",
-    rpcUrl: (env.RPC_URL || "https://rpc.mainnet.chain.robinhood.com").trim(),
-    explorerUrl: (env.EXPLORER_URL || "https://robinhoodchain.blockscout.com").trim(),
-    dailyLimit: Number(env.DAILY_LIMIT || 20),
-    // Holder tiers: more tokens held, more builds a day. Multipliers of REQUIRED_AMOUNT / DAILY_LIMIT.
-    tiers: [
-      { name: "Signal", hold: 1, builds: 1 },
-      { name: "Synapse", hold: Number(env.TIER2_HOLD || 5), builds: Number(env.TIER2_BUILDS || 3) },
-      { name: "Cortex", hold: Number(env.TIER3_HOLD || 20), builds: Number(env.TIER3_BUILDS || 10) },
-    ],
-    // DEMO=1 opens the studio to any signed-in wallet (for testing before the token exists).
-    demo: env.DEMO === "1" || env.DEMO === "true" || !env.TOKEN_ADDRESS,
+    tokenAddress,
+    tokenSymbol: String(env.TOKEN_SYMBOL || token.symbol || "AXON").trim(),
+    requiredAmount: Number(env.REQUIRED_AMOUNT || token.requiredAmount || 1_000_000),
+    buyUrl: String(env.BUY_URL || token.buyUrl || "").trim(),
+    chainId: Number(env.CHAIN_ID || chain.id || 4663),
+    chainName: env.CHAIN_NAME || chain.name || "Robinhood Chain",
+    rpcUrl: String(env.RPC_URL || chain.rpcUrl || "https://rpc.mainnet.chain.robinhood.com").trim(),
+    explorerUrl: String(env.EXPLORER_URL || chain.explorerUrl || "https://robinhoodchain.blockscout.com").trim(),
+    dailyLimit: Number(env.DAILY_LIMIT ?? builds.dailyLimit ?? 20),
+    tiers,
+    // Demo mode (every wallet gets in) until a token address is set, or with DEMO=1.
+    demo: env.DEMO === "1" || env.DEMO === "true" || !tokenAddress,
   };
+}
+
+/** True when the server can sign sessions (SESSION_SECRET or a fallback is set). */
+export function hasSecret() {
+  try { secret(); return true; } catch { return false; }
 }
 
 /** What the browser may see. */
 export function publicConfig() {
   const s = settings();
   return {
-    demo: s.demo, tokenAddress: s.tokenAddress, tokenSymbol: s.tokenSymbol, requiredAmount: s.requiredAmount,
+    demo: s.demo, ready: hasSecret(), tokenAddress: s.tokenAddress, tokenSymbol: s.tokenSymbol, requiredAmount: s.requiredAmount, buyUrl: s.buyUrl,
     dailyLimit: s.dailyLimit, tiers: tierTable(), chainId: s.chainId, chainIdHex: "0x" + s.chainId.toString(16), chainName: s.chainName,
     rpcUrl: s.rpcUrl, explorerUrl: s.explorerUrl,
   };

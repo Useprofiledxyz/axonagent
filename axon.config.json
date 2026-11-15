@@ -1,0 +1,22 @@
+{
+  "token": {
+    "address": "",
+    "symbol": "AXON",
+    "requiredAmount": 1000000,
+    "buyUrl": ""
+  },
+  "builds": {
+    "dailyLimit": 20,
+    "tiers": [
+      { "name": "Signal", "holdMultiplier": 1, "buildsMultiplier": 1 },
+      { "name": "Synapse", "holdMultiplier": 5, "buildsMultiplier": 3 },
+      { "name": "Cortex", "holdMultiplier": 20, "buildsMultiplier": 10 }
+    ]
+  },
+  "chain": {
+    "id": 4663,
+    "name": "Robinhood Chain",
+    "rpcUrl": "https://rpc.mainnet.chain.robinhood.com",
+    "explorerUrl": "https://robinhoodchain.blockscout.com"
+  }
+}

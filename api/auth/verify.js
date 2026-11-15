@@ -1,4 +1,4 @@
-import { SESSION_COOKIE, json, readBody, setCookie, settings, sign, tokenBalance, unsign, verifyWalletSignature } from "../_lib.js";
+import { SESSION_COOKIE, hasSecret, json, readBody, setCookie, settings, sign, tokenBalance, unsign, verifyWalletSignature } from "../_lib.js";
 
 const SESSION_HOURS = 12;
 
@@ -6,6 +6,7 @@ const SESSION_HOURS = 12;
 // balance on chain, and opens a session cookie when the wallet holds enough.
 export default async function handler(req, res) {
   if (req.method !== "POST") return json(res, 405, { error: "POST only" });
+  if (!hasSecret()) return json(res, 503, { error: "Sign-in isn't set up yet: add SESSION_SECRET in the hosting settings." });
   const { ticket, signature } = await readBody(req);
   const t = unsign(ticket);
   if (!t || t.kind !== "nonce") return json(res, 400, { error: "The sign-in request expired. Try again." });

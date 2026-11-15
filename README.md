@@ -57,6 +57,7 @@ index.html, app.js, home.js   landing page
 studio.html, studio.js        the studio
 templates/                    ready-made apps (game, dashboard, tracker, token page) to remix
 gate.js                       wallet sign-in (Robinhood Chain)
+axon.config.json              token, tiers and chain settings
 config.js                     social links
 styles.css, assets/           look and logo
 api/                          serverless API (auth, balance, agent)
@@ -71,9 +72,12 @@ cp .env.example .env    # fill in ANTHROPIC_API_KEY and SESSION_SECRET
 npm run dev             # http://localhost:3000
 ```
 
-Deploy on Vercel: import the repo, framework preset **Other**, no build command, then add the
-environment variables from `.env.example`. Leave `TOKEN_ADDRESS` empty to run in demo mode
-(every wallet can enter).
+Deploy on Vercel: import the repo, framework preset **Other**, no build command.
+
+**Settings.** Token, tiers and chain live in [`axon.config.json`](axon.config.json): set
+`token.address` to the AXON contract address and `token.buyUrl` to a buy link. With no address
+the studio runs in demo mode (every wallet can enter). Secrets go in Vercel environment
+variables only: `ANTHROPIC_API_KEY` (the agent) and `SESSION_SECRET` (sign-in).
 
 ## Security
 

@@ -1,11 +1,9 @@
 // ============================================================
-//  AXON: site settings. Edit this file; no need to touch the rest.
-//  Token gate, chain and limits live on the SERVER (Vercel env vars):
-//  TOKEN_ADDRESS, TOKEN_SYMBOL, REQUIRED_AMOUNT, CHAIN_ID, RPC_URL, DAILY_LIMIT, ...
+//  AXON: links shown on the site. Edit this file for socials.
+//  Token, tiers and chain settings live in axon.config.json (read by the server).
 // ============================================================
 window.AXON_CONFIG = {
   xUrl: "https://x.com/Useaxonxyz",
   communityUrl: "https://t.me/",
   docsUrl: "#faq",
-  buyUrl: "", // e.g. a Jupiter or Raydium link for the token; empty hides the Buy button
 };

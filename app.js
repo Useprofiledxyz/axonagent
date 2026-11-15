@@ -6,7 +6,7 @@
 
   for (const id of ["xLink", "xLink2"]) $(id).href = C.xUrl || "#";
   $("tgLink").href = C.communityUrl || "#";
-  if (C.buyUrl) { $("buyBtn").href = C.buyUrl; $("buyBtn").style.display = ""; }
+
 
   const msg = (t, kind = "") => { $("gMsg").textContent = t; $("gMsg").className = `msg ${kind}`; };
   let cfg = null;
@@ -43,7 +43,12 @@
     cfg = c;
     drawTiers(c);
     $("gNeed").textContent = c.demo ? "open (demo mode)" : `${G.fmt(c.requiredAmount)} $${c.tokenSymbol}`;
-    $("gCa").textContent = c.tokenAddress || "coming soon";
+    const buy = c.buyUrl || C.buyUrl;
+    if (buy) { $("buyBtn").href = buy; $("buyBtn").style.display = ""; }
+    if (c.tokenAddress) {
+      $("gCa").innerHTML = `<a href="${c.explorerUrl}/token/${c.tokenAddress}" target="_blank" rel="noreferrer" title="${c.tokenAddress}">${G.short(c.tokenAddress)} ↗</a>`;
+    } else $("gCa").textContent = "coming soon";
+    if (!c.ready) msg("Sign-in isn't set up on the server yet (SESSION_SECRET).", "err");
     if (c.tokenAddress) {
       const ca = document.createElement("button");
       ca.className = "ca"; ca.textContent = `CA ${c.tokenAddress}`;
