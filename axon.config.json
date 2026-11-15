@@ -1,16 +1,28 @@
 {
   "token": {
-    "address": "",
+    "address": "0x8222872690f7Ec4f2b3d9eCD4d0906a8abfe7232",
     "symbol": "AXON",
     "requiredAmount": 1000000,
-    "buyUrl": ""
+    "buyUrl": "https://ponsfamily.com/launchpad/0x8222872690f7ec4f2b3d9ecd4d0906a8abfe7232"
   },
   "builds": {
     "dailyLimit": 20,
     "tiers": [
-      { "name": "Signal", "holdMultiplier": 1, "buildsMultiplier": 1 },
-      { "name": "Synapse", "holdMultiplier": 5, "buildsMultiplier": 3 },
-      { "name": "Cortex", "holdMultiplier": 20, "buildsMultiplier": 10 }
+      {
+        "name": "Signal",
+        "holdMultiplier": 1,
+        "buildsMultiplier": 1
+      },
+      {
+        "name": "Synapse",
+        "holdMultiplier": 5,
+        "buildsMultiplier": 3
+      },
+      {
+        "name": "Cortex",
+        "holdMultiplier": 20,
+        "buildsMultiplier": 10
+      }
     ]
   },
   "chain": {
