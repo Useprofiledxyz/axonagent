@@ -1,0 +1,17 @@
+{
+  "name": "axon-os",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Axon: a token-gated prompt-to-app AI studio on Robinhood Chain.",
+  "scripts": {
+    "dev": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "viem": "^2.57.19"
+  }
+}

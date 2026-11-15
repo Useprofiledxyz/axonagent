@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Axon — Studio</title>
+  <link rel="icon" href="assets/logo-static.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Chakra+Petch:wght@500;600;700&family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+  <script src="gate.js"></script>
+</head>
+<body class="studio">
+  <div class="locked" id="locked">
+    <div class="card">
+      <img src="assets/logo.svg" alt="" />
+      <h3>Studio locked</h3>
+      <p>Connect a holder wallet on the home page to open the studio.</p>
+      <p style="margin-top:14px"><a class="btn primary" href="index.html#access">← Back to sign in</a></p>
+    </div>
+  </div>
+
+  <div class="st-bar">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" /><span>AX<i>O</i>N</span></a>
+    <select id="projectSel" aria-label="Project"></select>
+    <button class="btn small" id="newBtn">+ New</button>
+    <select id="tplSel" aria-label="Start from a template">
+      <option value="">Templates…</option>
+      <option value="snake">Neon Snake (game)</option>
+      <option value="dashboard">Pulse (dashboard)</option>
+      <option value="habits">Streaks (tracker)</option>
+      <option value="landing">$ORBIT (token page)</option>
+    </select>
+    <button class="btn small" id="undoBtn" title="Back to the previous version">↶ Undo</button>
+    <button class="btn small" id="exportBtn">Download</button>
+    <span class="sp"></span>
+    <span class="who" id="who"></span>
+    <button class="btn small" id="outBtn">Disconnect</button>
+  </div>
+
+  <div class="st-tabs" id="tabs">
+    <button data-col="chatCol" class="on">Chat</button>
+    <button data-col="codeCol">Code</button>
+    <button data-col="prevCol">Preview</button>
+  </div>
+
+  <main class="st-main">
+    <section class="st-col on" id="chatCol">
+      <div class="st-head"><span>AXON AGENT</span><span id="credits"></span></div>
+      <div class="st-chat" id="chat"></div>
+      <form class="st-ask" id="askForm">
+        <textarea id="prompt" placeholder="Describe the app you want, or a change to make…"></textarea>
+        <button class="btn primary" id="sendBtn" type="submit">↑</button>
+      </form>
+    </section>
+    <section class="st-col" id="codeCol">
+      <div class="st-head"><span>INDEX.HTML</span><span id="saved">saved</span></div>
+      <textarea id="code" spellcheck="false" autocomplete="off"></textarea>
+    </section>
+    <section class="st-col" id="prevCol">
+      <div class="st-head"><span>LIVE PREVIEW</span><button class="btn small" id="reloadBtn">Reload</button></div>
+      <iframe id="frame" title="Live preview" sandbox="allow-scripts allow-forms allow-modals allow-popups"></iframe>
+    </section>
+  </main>
+
+  <script src="studio.js"></script>
+</body>
+</html>

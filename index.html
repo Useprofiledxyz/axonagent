@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AXON — Neural App Engine</title>
+  <meta name="description" content="AXON turns one thought into a working web app: code, live preview and source you own. Unlocked for token holders on Robinhood Chain." />
+  <meta property="og:title" content="AXON — Neural App Engine" />
+  <meta property="og:description" content="Prompt in. Product out. A prompt-to-app studio for token holders on Robinhood Chain." />
+  <meta property="og:image" content="https://useaxon.xyz/docs/banner.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@Useaxonxyz" />
+  <meta name="twitter:image" content="https://useaxon.xyz/docs/banner.png" />
+  <link rel="icon" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Chakra+Petch:wght@500;600;700&family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js"></script>
+  <script src="gate.js"></script>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="nav">
+    <a class="brand" href="#"><img src="assets/logo.svg" alt="" /><span>AX<i>O</i>N</span></a>
+    <span class="net mono"><i></i>ROBINHOOD CHAIN</span>
+    <span class="sp"></span>
+    <a class="link" href="#what">What is it</a>
+    <a class="link" href="#showcase">Showcase</a>
+    <a class="link" href="#tiers">Tiers</a>
+    <a class="link" href="#demo">Studio</a>
+    <a class="link" href="#faq">FAQ</a>
+    <a class="link" id="xLink" href="#" target="_blank" rel="noreferrer">X</a>
+    <a class="btn small primary" href="#access">Enter studio</a>
+  </nav>
+
+  <!-- HERO: blueprint with the chip -->
+  <header class="hero">
+    <div class="hero-copy">
+      <div class="tag mono">[ NEURAL APP ENGINE ] &nbsp;THOUGHT → APP</div>
+      <h1>Think it once.<br /><em>Axon wires the app.</em></h1>
+      <p class="lead">AXON fires your idea through its network: it reads what you describe, writes the code, compiles a live preview in your browser and hands you the source. No setup. No boilerplate. For verified token holders.</p>
+      <div class="cta">
+        <a class="btn primary" href="#access">Initialize access ›</a>
+        <a class="btn ghost" href="#demo">See it build</a>
+      </div>
+      <div class="stats mono">
+        <div><b>~40s</b><span>FIRST BUILD</span></div>
+        <div><b>1 FILE</b><span>DEPLOY ANYWHERE</span></div>
+        <div><b>100%</b><span>YOUR SOURCE</span></div>
+      </div>
+    </div>
+
+    <div class="hero-chip" aria-hidden="true">
+      <svg class="blueprint" viewBox="0 0 600 600">
+        <g class="rings" fill="none" stroke="#7cf7ff">
+          <circle cx="300" cy="300" r="230" stroke-opacity=".18" stroke-dasharray="2 10" class="spin" />
+          <circle cx="300" cy="300" r="270" stroke-opacity=".10" class="spin rev" stroke-dasharray="40 14 4 14" />
+          <circle cx="300" cy="300" r="190" stroke-opacity=".12" />
+        </g>
+        <g class="ticks" stroke="#7cf7ff" stroke-opacity=".35">
+          <path d="M300 18v26M300 556v26M18 300h26M556 300h26" />
+        </g>
+        <!-- callouts -->
+        <g class="callout c1"><path d="M412 150l60-60h96" fill="none" stroke="#7cf7ff" stroke-opacity=".6" /><circle cx="412" cy="150" r="4" fill="#7cf7ff" /><text x="480" y="82">INPUT · THOUGHT</text></g>
+        <g class="callout c2"><path d="M180 452l-60 60H24" fill="none" stroke="#ff4fd8" stroke-opacity=".7" /><circle cx="180" cy="452" r="4" fill="#ff4fd8" /><text x="24" y="504">OUTPUT · APP.HTML</text></g>
+        <g class="callout c3"><path d="M452 380l70 40" fill="none" stroke="#7cf7ff" stroke-opacity=".5" /><circle cx="452" cy="380" r="4" fill="#7cf7ff" /><text x="470" y="446">LIVE PREVIEW</text></g>
+      </svg>
+      <img class="chip" src="assets/logo.svg" alt="" />
+    </div>
+  </header>
+
+  <!-- prompt ticker -->
+  <div class="ticker mono" aria-hidden="true"><div class="track">
+    <span>“a habit tracker with streaks”</span><span>“snake game with neon trails”</span><span>“pricing page for my token”</span><span>“crypto portfolio dashboard”</span><span>“pomodoro timer with sounds”</span><span>“landing page for a cat cafe”</span>
+    <span>“a habit tracker with streaks”</span><span>“snake game with neon trails”</span><span>“pricing page for my token”</span><span>“crypto portfolio dashboard”</span><span>“pomodoro timer with sounds”</span><span>“landing page for a cat cafe”</span>
+  </div></div>
+
+
+  <!-- WHAT IS AXON -->
+  <section class="block explain" id="what">
+    <div class="sec-tag mono">// WHAT IS AXON</div>
+    <h2 class="sec-h">An AI agent that <em>builds apps for you.</em></h2>
+    <div class="explain-grid">
+      <div class="ex"><div class="ex-n mono">YOU</div><p>Type what you want in plain words: <i>“a snake game with neon colors”</i>, <i>“a landing page for my token”</i>.</p></div>
+      <div class="ex-arrow" aria-hidden="true">→</div>
+      <div class="ex"><div class="ex-n mono">AXON AGENT</div><p>Plans the screens, writes all the HTML, CSS and JavaScript, and runs it live while it types.</p></div>
+      <div class="ex-arrow" aria-hidden="true">→</div>
+      <div class="ex"><div class="ex-n mono">YOUR APP</div><p>A working web app you can play with, tweak by chatting, and download as one file to host anywhere.</p></div>
+    </div>
+    <p class="explain-note mono">No coding. No setup. Holding the AXON token is your key to the studio.</p>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="block" id="showcase">
+    <div class="sec-tag mono">// SHOWCASE</div>
+    <h2 class="sec-h">Apps you can make <em>in one prompt.</em></h2>
+    <p class="sec-sub">These run live right here. Open one in the studio and tell AXON how to change it.</p>
+    <div class="show">
+      <article class="app">
+        <div class="app-frame"><iframe src="templates/snake.html" title="Neon Snake" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></div>
+        <div class="app-meta"><div><span class="app-tag mono">GAME</span><h3>Neon Snake</h3><p class="prompt mono">“snake game, neon trails, swipe on mobile, high score”</p></div>
+        <a class="btn small" href="studio.html?template=snake">Remix in studio ›</a></div>
+      </article>
+      <article class="app">
+        <div class="app-frame"><iframe src="templates/dashboard.html" title="Pulse dashboard" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></div>
+        <div class="app-meta"><div><span class="app-tag mono">DASHBOARD</span><h3>Pulse</h3><p class="prompt mono">“live crypto portfolio dashboard with a gradient chart”</p></div>
+        <a class="btn small" href="studio.html?template=dashboard">Remix in studio ›</a></div>
+      </article>
+      <article class="app">
+        <div class="app-frame"><iframe src="templates/habits.html" title="Streaks habit tracker" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></div>
+        <div class="app-meta"><div><span class="app-tag mono">TOOL</span><h3>Streaks</h3><p class="prompt mono">“habit tracker, weekly grid, streak counter, saves locally”</p></div>
+        <a class="btn small" href="studio.html?template=habits">Remix in studio ›</a></div>
+      </article>
+      <article class="app">
+        <div class="app-frame"><iframe src="templates/landing.html" title="$ORBIT landing page" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe></div>
+        <div class="app-meta"><div><span class="app-tag mono">LANDING PAGE</span><h3>$ORBIT</h3><p class="prompt mono">“token landing page with a glowing orb, CA copy, stats”</p></div>
+        <a class="btn small" href="studio.html?template=landing">Remix in studio ›</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="block" id="pipeline">
+    <div class="sec-tag mono">// PIPELINE</div>
+    <h2 class="sec-h">One sentence in.<br /><em>A working app out.</em></h2>
+    <div class="pipe">
+      <div class="pipe-line"><i></i></div>
+      <div class="stage"><div class="dot mono">01</div><h3>Prompt</h3><p>Say what you want: screens, colors, how it should feel.</p></div>
+      <div class="stage"><div class="dot mono">02</div><h3>Compile</h3><p>Axon plans the layout and writes HTML, CSS and JavaScript.</p></div>
+      <div class="stage"><div class="dot mono">03</div><h3>Preview</h3><p>The app runs live in a sandbox while the code streams in.</p></div>
+      <div class="stage"><div class="dot mono">04</div><h3>Ship</h3><p>Refine, undo any step, then download one deploy-ready file.</p></div>
+    </div>
+  </section>
+
+  <!-- LIVE DEMO: terminal + preview -->
+  <section class="block" id="demo">
+    <div class="sec-tag mono">// LIVE STUDIO</div>
+    <h2 class="sec-h">Watch it <em>compile.</em></h2>
+    <div class="demo">
+      <div class="term">
+        <div class="term-bar mono"><i></i><i></i><i></i><span>axon — session 0427</span></div>
+        <pre class="term-body mono" id="termBody"></pre>
+      </div>
+      <div class="preview">
+        <div class="pv-bar mono"><span class="live"><i></i>LIVE</span><span>preview / app.html</span></div>
+        <div class="pv-body" id="pvBody">
+          <div class="pv-card"><small>Streak</small><b id="pvStreak">0</b><span>days</span></div>
+          <div class="pv-card"><small>Today</small><b id="pvToday">0/5</b><span>habits</span></div>
+          <div class="pv-chart"><svg viewBox="0 0 300 90" preserveAspectRatio="none"><path id="pvPath" d="M0 80" fill="none" stroke="#7cf7ff" stroke-width="3" /></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="bento">
+      <div class="b b1"><div class="b-tag mono">SANDBOX</div><h3>Live preview</h3><p>Every change renders instantly in an isolated frame.</p></div>
+      <div class="b b2"><div class="b-tag mono">EDITOR</div><h3>Code you can touch</h3><p>Edit the source yourself, right in the browser.</p></div>
+      <div class="b b3"><div class="b-tag mono">HISTORY</div><h3>Undo any step</h3><p>Every version is kept per project.</p></div>
+      <div class="b b4"><div class="b-tag mono">EXPORT</div><h3>Own the source</h3><p>One HTML file. Host it anywhere, forever.</p></div>
+    </div>
+  </section>
+
+
+  <!-- USE CASES -->
+  <section class="block" id="uses">
+    <div class="sec-tag mono">// BUILD ANYTHING</div>
+    <h2 class="sec-h">One studio, <em>endless apps.</em></h2>
+    <div class="uses">
+      <div class="use"><span class="use-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".9" fill="currentColor"/><circle cx="17.8" cy="13.8" r=".9" fill="currentColor"/></svg></span><b>Games</b><span>arcade, puzzles, idle clickers</span></div>
+      <div class="use"><span class="use-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 15l3-3 2.5 2.5L17 9"/><path d="M14 9h3v3"/></svg></span><b>Dashboards</b><span>portfolios, trackers, charts</span></div>
+      <div class="use"><span class="use-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9M14.6 9.6c-.5-.9-1.5-1.3-2.6-1.3-1.5 0-2.6.8-2.6 1.9 0 2.6 5.4 1.3 5.4 3.9 0 1.1-1.2 1.9-2.8 1.9-1.2 0-2.3-.5-2.8-1.4"/></svg></span><b>Token pages</b><span>launch sites, CA copy, stats</span></div>
+      <div class="use"><span class="use-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3.8 17a1.9 1.9 0 0 0 2.7 2.7l5.5-5.5a4 4 0 0 0 5.2-5.4l-2.4 2.4-2.3-.6-.6-2.3z"/></svg></span><b>Tools</b><span>calculators, converters, timers</span></div>
+      <div class="use"><span class="use-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2.2"/><path d="M5.5 17c.8-2 2-3 3.5-3s2.7 1 3.5 3M14.5 9h3.5M14.5 12.5h3.5"/></svg></span><b>Portfolios</b><span>personal sites, link pages</span></div>
+      <div class="use"><span class="use-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-4.5h13L20 9"/><path d="M4 9h16v2a2.7 2.7 0 0 1-5.3 0 2.7 2.7 0 0 1-5.4 0A2.7 2.7 0 0 1 4 11z"/><path d="M5.5 13.5V20h13v-6.5M10 20v-4h4v4"/></svg></span><b>Stores</b><span>product pages, menus, catalogs</span></div>
+      <div class="use"><span class="use-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8.5l1.3 1.3L11.8 7.3M8 14.5l1.3 1.3 2.5-2.5M14 8.5h2.5M14 14.5h2.5"/></svg></span><b>Forms</b><span>quizzes, polls, sign-ups</span></div>
+      <div class="use"><span class="use-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4z"/><path d="M18.5 15l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8zM5.5 15.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg></span><b>Fun</b><span>generators, memes, toys</span></div>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section class="block" id="tiers">
+    <div class="sec-tag mono">// HOLDER TIERS</div>
+    <h2 class="sec-h">Hold more, <em>build more.</em></h2>
+    <p class="sec-sub">Your tier is read from your wallet on Robinhood Chain every time you sign in.</p>
+    <div class="tiers" id="tierCards">
+      <div class="tier"><div class="tier-n mono">SIGNAL</div></div>
+      <div class="tier hot"><div class="tier-n mono">SYNAPSE</div></div>
+      <div class="tier"><div class="tier-n mono">CORTEX</div></div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="block" id="roadmap">
+    <div class="sec-tag mono">// ROADMAP</div>
+    <h2 class="sec-h">Where AXON <em>goes next.</em></h2>
+    <div class="road">
+      <div class="rm done"><span class="mono">LIVE</span><b>Studio v1</b><p>Prompt-to-app agent, live preview, editor, undo, download, templates.</p></div>
+      <div class="rm done"><span class="mono">LIVE</span><b>Holder tiers</b><p>Token-gated access on Robinhood Chain with daily builds by tier.</p></div>
+      <div class="rm"><span class="mono">SOON</span><b>One-click publish</b><p>Put your app online at its own link without leaving the studio.</p></div>
+      <div class="rm"><span class="mono">SOON</span><b>GitHub export</b><p>Push any project to a GitHub repo.</p></div>
+      <div class="rm"><span class="mono">LATER</span><b>Multi-page apps</b><p>Bigger projects with several files and pages.</p></div>
+      <div class="rm"><span class="mono">LATER</span><b>Community gallery</b><p>Share builds, remix other holders' apps.</p></div>
+    </div>
+  </section>
+
+  <!-- ACCESS: token gate as a terminal -->
+  <section class="block" id="access">
+    <div class="sec-tag mono">// ACCESS</div>
+    <h2 class="sec-h">Holders build.<br /><em>Everyone else watches.</em></h2>
+    <div class="gate" id="gate">
+      <div class="gate-top mono"><span>$ axon auth --wallet</span><b id="gateState">LOCKED</b></div>
+      <div class="gate-rows mono">
+        <div><span>required</span><span id="gNeed">—</span></div>
+        <div><span>balance</span><span id="gBalance">—</span></div>
+        <div><span>contract</span><span id="gCa">—</span></div>
+        <div><span>wallet</span><span id="gWallet">not connected</span></div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="connectBtn">Initialize link ›</button>
+        <a class="btn" id="studioBtn" href="studio.html" style="display:none">Open studio →</a>
+        <a class="btn" id="buyBtn" href="#" target="_blank" rel="noreferrer" style="display:none">Buy token</a>
+        <button class="btn" id="outBtn" style="display:none">Disconnect</button>
+      </div>
+      <div class="msg mono" id="gMsg"></div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="sec-tag mono">// FAQ</div>
+    <h2 class="sec-h">Questions</h2>
+    <details open><summary>What is AXON, in one line?</summary><p>An AI agent that writes working web apps from a description. You chat, it builds, you download the result. Holding the AXON token unlocks it.</p></details>
+    <details><summary>Who can use the studio?</summary><p>Wallets on Robinhood Chain (MetaMask, Rabby or any EVM wallet) that hold at least the required amount of the token. Connect, sign a free message (no transaction), and the studio unlocks for 12 hours.</p></details>
+    <details><summary>What can Axon build?</summary><p>Single-page web apps: dashboards, games, landing pages, tools, calculators, trackers. Everything runs in the browser in one HTML file.</p></details>
+    <details><summary>Who owns what Axon makes?</summary><p>You do. Download the file and use it however you like.</p></details>
+    <details><summary>Is there a limit?</summary><p>Yes, a number of builds per wallet per day, shown in the studio. It keeps the agent fast for every holder.</p></details>
+    <details><summary>Where are my projects saved?</summary><p>In your browser on this device. Download anything you want to keep for good.</p></details>
+    <details><summary>Does signing in cost anything?</summary><p>No. Signing the message is free and does not send a transaction. Axon never asks for your seed phrase.</p></details>
+  </section>
+
+  <footer>
+    <a class="brand" href="#"><img src="assets/logo.svg" alt="" /><span>AX<i>O</i>N</span></a>
+    <span id="footCa"></span>
+    <span class="mono"><a id="xLink2" href="#" target="_blank" rel="noreferrer">X</a> · <a id="tgLink" href="#" target="_blank" rel="noreferrer">COMMUNITY</a> · © 2026</span>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$ORBIT — token landing page</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #05040a; color: #eeeefc; font-family: system-ui, sans-serif; overflow-x: hidden; }
+  .hero { min-height: 100vh; display: grid; place-items: center; text-align: center; position: relative; padding: 30px 20px; }
+  .orb { position: absolute; width: 60vmin; aspect-ratio: 1; border-radius: 50%; background: conic-gradient(#7cf7ff, #8b6cff, #ff4fd8, #7cf7ff); filter: blur(60px); opacity: .45; animation: spin 12s linear infinite; }
+  .ring { position: absolute; width: 46vmin; aspect-ratio: 1; border-radius: 50%; border: 1px dashed rgba(124,247,255,.5); animation: spin 30s linear infinite reverse; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .in { position: relative; }
+  .tag { display: inline-block; font: 600 11px ui-monospace, monospace; letter-spacing: .25em; color: #7cf7ff; border: 1px solid rgba(124,247,255,.4); padding: 6px 10px; border-radius: 99px; }
+  h1 { font-size: clamp(48px, 13vw, 120px); margin: 14px 0 6px; line-height: .9; letter-spacing: .02em; background: linear-gradient(180deg, #fff, #b9a8ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  p { color: #b9b5d8; max-width: 440px; margin: 0 auto 22px; line-height: 1.6; }
+  .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn { padding: 13px 22px; border-radius: 12px; font-weight: 700; text-decoration: none; border: 1px solid #2d2748; color: #fff; }
+  .btn.p { border: 0; color: #05030d; background: linear-gradient(90deg, #7cf7ff, #8b6cff 60%, #ff4fd8); }
+  .ca { margin-top: 18px; font: 12px ui-monospace, monospace; color: #8f8bab; cursor: pointer; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 560px; margin: 26px auto 0; }
+  .stats div { background: rgba(15,12,31,.7); border: 1px solid #241f3d; border-radius: 14px; padding: 12px; } .stats b { display: block; font-size: 20px; } .stats small { color: #8f8bab; font-size: 11px; }
+</style>
+</head>
+<body>
+  <section class="hero">
+    <div class="orb"></div><div class="ring"></div>
+    <div class="in">
+      <span class="tag">LIVE ON ROBINHOOD CHAIN</span>
+      <h1>$ORBIT</h1>
+      <p>The community token that never stops spinning. Fair launch, locked liquidity, zero team allocation.</p>
+      <div class="row"><a class="btn p" href="#">Buy $ORBIT</a><a class="btn" href="#">Chart</a><a class="btn" href="#">X</a></div>
+      <div class="ca" id="ca" title="Copy">CA 0x0000…0000 ⧉</div>
+      <div class="stats"><div><b id="h">0</b><small>HOLDERS</small></div><div><b>1B</b><small>SUPPLY</small></div><div><b>0%</b><small>TAX</small></div></div>
+    </div>
+  </section>
+<script>
+  let n = 0; const target = 4280, el = document.getElementById("h");
+  const t = setInterval(() => { n = Math.min(target, n + Math.ceil(target / 60)); el.textContent = n.toLocaleString("en-US"); if (n >= target) clearInterval(t); }, 25);
+  document.getElementById("ca").onclick = function () { navigator.clipboard?.writeText("0x0000000000000000000000000000000000000000"); this.textContent = "Copied ✓"; };
+</script>
+</body>
+</html>

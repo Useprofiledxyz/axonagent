@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <style>
+    .ring { transform-origin: 120px 120px; animation: spin 30s linear infinite; }
+    .sig { stroke-dasharray: 14 120; animation: sig 2.2s linear infinite; }
+    .sig.b { animation-delay: -.7s; } .sig.c { animation-delay: -1.4s; }
+    .node { transform-box: fill-box; transform-origin: center; animation: pulse 2.2s ease-in-out infinite; }
+    .node.b { animation-delay: .5s; } .node.c { animation-delay: 1s; } .node.d { animation-delay: 1.5s; }
+    .halo { transform-box: fill-box; transform-origin: center; animation: halo 2.2s ease-out infinite; }
+    .dend { animation: flick 3s ease-in-out infinite; } .dend.b { animation-delay: 1.5s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes sig { from { stroke-dashoffset: 134; } to { stroke-dashoffset: 0; } }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+    @keyframes halo { 0% { transform: scale(.6); opacity: .8; } 100% { transform: scale(1.8); opacity: 0; } }
+    @keyframes flick { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .sig { stroke-dasharray: none; opacity: 0; } }
+  </style>
+  <defs>
+    <linearGradient id="ax" x1="20" y1="20" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7cf7ff"/><stop offset=".5" stop-color="#8b6cff"/><stop offset="1" stop-color="#ff4fd8"/>
+    </linearGradient>
+    <radialGradient id="core" cx=".5" cy=".4" r=".65">
+      <stop offset="0" stop-color="#1a1238"/><stop offset="1" stop-color="#07050f"/>
+    </radialGradient>
+    <radialGradient id="glow"><stop offset="0" stop-color="#ffffff"/><stop offset=".35" stop-color="#b9a8ff"/><stop offset="1" stop-color="#6a4dff" stop-opacity="0"/></radialGradient>
+    <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r=".8" fill="#8b6cff" opacity=".35"/></pattern>
+  </defs>
+
+  <!-- orbit ring + core disc -->
+  <circle class="ring" cx="120" cy="120" r="108" fill="none" stroke="url(#ax)" stroke-width="1.6" stroke-dasharray="1 7"/>
+  <circle cx="120" cy="120" r="90" fill="url(#core)" stroke="url(#ax)" stroke-width="3.5"/>
+  <circle cx="120" cy="120" r="80" fill="url(#dots)"/>
+
+  <!-- dendrites -->
+  <g class="dend" stroke="#8b6cff" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M120 62L80 94M120 62l40 32M70 168l-26-12M170 168l26-12"/>
+  </g>
+  <g class="dend b" stroke="#7cf7ff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8">
+    <path d="M90 128L58 120M150 128l32-8M120 62V36"/>
+  </g>
+  <g fill="#b9a8ff"><circle cx="80" cy="94" r="3"/><circle cx="160" cy="94" r="3"/><circle cx="44" cy="156" r="3"/><circle cx="196" cy="156" r="3"/><circle cx="58" cy="120" r="3"/><circle cx="182" cy="120" r="3"/><circle cx="120" cy="36" r="3"/></g>
+
+  <!-- the A: axons -->
+  <g stroke="url(#ax)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#g)">
+    <path d="M70 168L120 62l50 106"/><path d="M90 128h60"/>
+  </g>
+  <!-- signals travelling down the axons -->
+  <g stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#g)">
+    <path class="sig" d="M120 62L70 168"/><path class="sig b" d="M120 62l50 106"/><path class="sig c" d="M90 128h60"/>
+  </g>
+
+  <!-- neurons -->
+  <circle class="halo" cx="120" cy="62" r="14" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <circle cx="120" cy="62" r="24" fill="url(#glow)" opacity=".55"/>
+  <circle class="node" cx="120" cy="62" r="11" fill="#07050f" stroke="#ffffff" stroke-width="4"/>
+  <circle class="node b" cx="70" cy="168" r="9" fill="#07050f" stroke="#7cf7ff" stroke-width="4"/>
+  <circle class="node c" cx="170" cy="168" r="9" fill="#07050f" stroke="#ff4fd8" stroke-width="4"/>
+  <circle class="node d" cx="90" cy="128" r="6" fill="#07050f" stroke="#b9a8ff" stroke-width="3"/>
+  <circle class="node d" cx="150" cy="128" r="6" fill="#07050f" stroke="#b9a8ff" stroke-width="3"/>
+</svg>

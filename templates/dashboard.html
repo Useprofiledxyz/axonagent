@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse — portfolio dashboard</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: #07060f; color: #eeeefc; font-family: system-ui, sans-serif; padding: 20px; }
+  header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  h1 { margin: 0; font-size: 20px; letter-spacing: .08em; } h1 b { color: #7cf7ff; }
+  .live { font: 600 11px ui-monospace, monospace; color: #7cf7ff; letter-spacing: .15em; } .live::before { content: "● "; animation: b 1.2s infinite; } @keyframes b { 50% { opacity: .2; } }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .card { background: #0f0c1f; border: 1px solid #241f3d; border-radius: 14px; padding: 14px; }
+  .card small { color: #8f8bab; font-size: 11px; letter-spacing: .1em; } .card b { display: block; font-size: 22px; margin-top: 6px; }
+  .up { color: #46f2b0; } .down { color: #ff5d8f; }
+  .chart { margin-top: 10px; height: 170px; position: relative; } canvas { width: 100%; height: 100%; display: block; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+  td { padding: 9px 4px; border-bottom: 1px solid #1c1834; } td:last-child, td:nth-child(3) { text-align: right; font-variant-numeric: tabular-nums; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+  @media (max-width: 520px) { .cards { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+  <header><h1>PULSE<b>.</b></h1><span class="live">LIVE</span></header>
+  <div class="cards">
+    <div class="card"><small>BALANCE</small><b id="bal">$0</b></div>
+    <div class="card"><small>24H</small><b id="chg" class="up">+0%</b></div>
+    <div class="card"><small>ASSETS</small><b>4</b></div>
+  </div>
+  <div class="card chart"><canvas id="cv"></canvas></div>
+  <div class="card"><table id="tb"></table></div>
+<script>
+  const assets = [
+    { s: "ETH", c: "#8b6cff", q: 2.4, p: 3120 }, { s: "BTC", c: "#ffb347", q: 0.08, p: 64200 },
+    { s: "AXON", c: "#7cf7ff", q: 1200000, p: 0.0031 }, { s: "USDC", c: "#46f2b0", q: 900, p: 1 },
+  ];
+  const hist = Array.from({ length: 60 }, (_, i) => 15000 + Math.sin(i / 6) * 600 + i * 40);
+  const cv = document.getElementById("cv"), x = cv.getContext("2d");
+  function total() { return assets.reduce((a, b) => a + b.q * b.p, 0); }
+  function draw() {
+    const w = cv.width = cv.clientWidth * devicePixelRatio, h = cv.height = cv.clientHeight * devicePixelRatio;
+    const lo = Math.min(...hist), hi = Math.max(...hist), X = (i) => (i / (hist.length - 1)) * w, Y = (v) => h - ((v - lo) / (hi - lo || 1)) * (h * .85) - h * .07;
+    const g = x.createLinearGradient(0, 0, w, 0); g.addColorStop(0, "#7cf7ff"); g.addColorStop(.6, "#8b6cff"); g.addColorStop(1, "#ff4fd8");
+    const f = x.createLinearGradient(0, 0, 0, h); f.addColorStop(0, "rgba(139,108,255,.35)"); f.addColorStop(1, "rgba(139,108,255,0)");
+    x.beginPath(); hist.forEach((v, i) => i ? x.lineTo(X(i), Y(v)) : x.moveTo(X(i), Y(v)));
+    x.lineTo(w, h); x.lineTo(0, h); x.fillStyle = f; x.fill();
+    x.beginPath(); hist.forEach((v, i) => i ? x.lineTo(X(i), Y(v)) : x.moveTo(X(i), Y(v)));
+    x.strokeStyle = g; x.lineWidth = 3 * devicePixelRatio; x.stroke();
+  }
+  function render() {
+    const t = total(), first = hist[0];
+    document.getElementById("bal").textContent = "$" + t.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    const ch = ((t - first) / first) * 100, el = document.getElementById("chg");
+    el.textContent = (ch >= 0 ? "+" : "") + ch.toFixed(2) + "%"; el.className = ch >= 0 ? "up" : "down";
+    document.getElementById("tb").innerHTML = assets.map((a) => `<tr><td><span class="dot" style="background:${a.c}"></span>${a.s}</td><td>${a.q.toLocaleString("en-US")}</td><td>$${(a.q * a.p).toLocaleString("en-US", { maximumFractionDigits: 0 })}</td></tr>`).join("");
+    draw();
+  }
+  setInterval(() => { // demo prices drift so the dashboard feels live
+    assets.forEach((a) => { if (a.s !== "USDC") a.p *= 1 + (Math.random() - 0.48) * 0.006; });
+    hist.push(total()); if (hist.length > 60) hist.shift(); render();
+  }, 1200);
+  addEventListener("resize", draw); render();
+</script>
+</body>
+</html>
