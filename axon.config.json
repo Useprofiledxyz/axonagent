@@ -1,9 +1,9 @@
 {
   "token": {
-    "address": "0x7AF3d14eE0224f3d38436F2CB94645dEd7D1e0c9",
+    "address": "",
     "symbol": "AXON",
     "requiredAmount": 1000000,
-    "buyUrl": "https://ponsfamily.com/launchpad/0x7af3d14ee0224f3d38436f2cb94645ded7d1e0c9"
+    "buyUrl": ""
   },
   "builds": {
     "dailyLimit": 20,
